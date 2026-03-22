@@ -55,7 +55,6 @@ aws ec2 authorize-security-group-ingress --group-id $security_group_id --protoco
 aws ec2 authorize-security-group-egress --group-id $security_group_id --protocol $protocol --cidr $cidrblock
 
 aws ec2 create-route-table --vpc-id $vpc_id
-aws ec2 associate-route-table --route-table-id $route_table_id --subnet-id $subnet_id
 aws ec2 create-route --route-table-id $route_table_id --destination-cidr-block 0.0.0.0/0 --gateway-id $gateway_id
 
 ## Get info about various VPC resources
