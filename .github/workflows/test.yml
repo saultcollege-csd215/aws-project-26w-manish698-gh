@@ -3,7 +3,8 @@ name: Run Tests
 on:
   push:
     branches:
-      -  aws-project
+      - aws-project
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -24,3 +25,8 @@ jobs:
 
       - name: Run tests
         run: pytest
+
+      - name: Trigger Lambda Deployment
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: lambda.yml
