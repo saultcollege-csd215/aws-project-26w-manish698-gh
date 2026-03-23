@@ -33,8 +33,3 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Deploy Lambda
-
-      - name: Trigger EC2 Deployment
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: Deploy EC2

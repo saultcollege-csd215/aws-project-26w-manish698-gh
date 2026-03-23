@@ -1,6 +1,9 @@
 name: Deploy EC2
 
 on:
+  push:
+    branches:
+      - aws-project
   workflow_dispatch:
 
 jobs:
