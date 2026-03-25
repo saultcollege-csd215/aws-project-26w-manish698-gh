@@ -1,1 +1,35 @@
-name: Test
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - aws-project
+
+permissions:
+  actions: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          pip install -r app/requirements_flask.txt
+          pip install pytest
+
+      - name: Run tests
+        run: pytest
+
+      - name: Trigger Lambda Deployment
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Deploy Lambda
